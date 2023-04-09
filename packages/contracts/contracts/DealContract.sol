@@ -11,6 +11,11 @@ contract DealContract {
 
     uint executedBalance;
 
+    address public celo; // CELO address mainnet 0x8dd4f800851Db9DC219fdFaEB82F8d69e2B13582 testnet(Alfajores) 0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9
+    address public cusd; // cUSD address mainnet 0x765de816845861e75a25fca122bb6898b8b1282a testnet(Alfajores) 0x874069fa1eb16d44d622f2e0ca25eea172369bc1
+    address public ceur; // cEUR address mainnet 0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73 testnet(Alfajores) 0x10c892a6ec43a53e45d0b916b4b7d383b1b78c0f
+    address public creal; // cREAL address mainnet 0xe8537a3d056DA446677B9E9d6c5dB704EaAb4787 testnet(Alfajores) 0xC5375c73a627105eb4DF00867717F6e301966C32
+
     struct Deal{
         uint dealId;
         address sellerAddress;
@@ -30,6 +35,13 @@ contract DealContract {
     event eventDeal(Deal _deal);
 
     event eventMsgValue(uint _msgValue);
+    
+    constructor(address _celo, address _cusd, address _ceur, address _creal) {
+        celo = _celo;
+        cusd = _cusd;
+        ceur = _ceur;
+        creal = _creal;
+    }
 
     function claim(uint _grantDeadline,uint _executeDeadlineInterval) public payable returns(Deal memory){
 
